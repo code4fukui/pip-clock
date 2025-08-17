@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="data:">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap" rel="stylesheet">
+<title>pip-clock - clock with picture in picture API</title>
+</head><body>
+<h1>pip-clock</h1>
+
+<button id="pipButton">PiP START</button><br>
+<canvas id="canvas" width="3200" height="1500" style="xwidth:100%"></canvas>
+<hr>
+<a href=https://github.com/code4fukui/pip-clock/>src on GtiHub</a><br>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+// canvas にアニメーション描画
+let x = 0;
+function draw() {
+  const now = new Date();
+  const h = String(now.getHours()).padStart(2, "0");
+  const m = String(now.getMinutes()).padStart(2, "0");
+  const s = String(now.getSeconds()).padStart(2, "0");
+  const timeStr = `${h}:${m}:${s}`;
+
+  ctx.fillStyle = "black";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "#eee";
+  ctx.font = "600px 'Roboto Mono', monospace";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(timeStr, canvas.width / 2, canvas.height / 2);
+  requestAnimationFrame(draw);
+}
+draw();
+
+
+document.getElementById('pipButton').addEventListener('click', async () => {
+  // canvas を video に流す
+  const fps = 60;
+  const stream = canvas.captureStream(fps);
+  const video = document.createElement('video');
+  video.srcObject = stream;
+  await video.play();
+  await video.requestPictureInPicture();
+});
+</script>
+
+<style>
+body {
+  text-align: center;
+}
+button {
+  margin: 1em 0;
+  padding: .5em;
+}
+canvas {
+  max-height: 50vh;
+  max-width: 100%;
+}
+</style>
+
+</body></html>
+
