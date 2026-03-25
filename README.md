@@ -1,20 +1,25 @@
 # pip-clock
-日本語のREADMEはこちらです: [README.ja.md](README.ja.md)
 
-A clock with picture-in-picture (PiP) functionality.
+pip-clock - clock with picture in picture API
 
-## Demo
-The demo is available at the [repository on GitHub](https://code4fukui.github.io/pip-clock/).
+**Live demo**: https://code4fukui.github.io/pip-clock/
 
 ## Features
-- Displays the current time in a large digital format
-- Allows the clock to be launched in a PiP window
 
-## Usage
-To use the clock:
+- Canvas-based rendering
 
-1. Open the `index.html` file in a web browser.
-2. Click the "PiP START" button to launch the clock in a PiP window.
+## Technology Stack
+
+
+## Installation & Setup
+
+No build step required. Clone the repository and open `index.html` in a browser,
+or visit the live demo at https://code4fukui.github.io/pip-clock/
+
+## Contributing
+
+Contributions are welcome. Please open an issue or pull request on GitHub.
 
 ## License
-This project is licensed under the [MIT License](LICENSE).
+
+MIT License. See [LICENSE](./LICENSE) for details.
